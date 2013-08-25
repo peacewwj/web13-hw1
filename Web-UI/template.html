@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MyBook">
+<head>
+<meta charset="utf-8">
+<title>WebDevHW1 - Mybook</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Loading Bootstrap -->
+<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+<!-- Loading Flat UI -->
+<link href="css/flat-ui.css" rel="stylesheet">
+<link href="css/demo.css" rel="stylesheet">
+<link href="css/custom.css" rel="stylesheet">
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+<!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body ng-controller="ctrl" style="background-color: #d8dee7">
+
+	<div class="navbar navbar-inverse">
+		<div class="navbar-inner">
+			<div class="container">
+				<button type="button" class="btn btn-navbar" data-toggle="collapse"
+					data-target="#nav-collapse-03"></button>
+				<a href="#fakelink" class="brand">MyBook</a>
+				<div class="nav-collapse collapse" id="nav-collapse-03">
+					<ul class="nav">
+						<li><a href="#fakelink" class="fui-user"></a></li>
+						<li><a href="#fakelink" class="fui-chat"></a></li>
+						<li><a href="#fakelink" class="fui-alert"></a></li>
+					</ul>
+					<!-- /nav -->
+
+					<ul class="nav pull-right">
+						<li><img src="mybook/images/profile-pic-50.jpg"
+							alt="Small Profile Picture" style="margin: 1px"></li>
+						<li><a href="#fakelink"> Peace & Raphassit </a></li>
+						<li class="divider"></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown">
+								<div class="fui-gear"></div> <b class="caret"></b>
+						</a>
+							<ul class="dropdown-menu">
+								<li><a href="#fakelink">Account Settings</a></li>
+								<li><a href="#fakelink">...</a></li>
+								<li><a href="#fakelink">...</a></li>
+								<li class="divider"></li>
+								<li><a href="#fakelink">Logout</a></li>
+							</ul></li>
+					</ul>
+					<!-- /nav -->
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
+	<!-- /navbar-inverse -->
+
+	<div class="container">
+
+		<!-- -->
+		<div class="row">
+			<div class="span12">
+				<img class="img-rounded" src="mybook/images/cover.jpg"
+					alt="Cover Photo">
+			</div>
+		</div>
+		<!-- -->
+
+		<div class="row mtl">
+			<div class="row inner-row">
+				<!-- left column-->
+				<div class="span5">
+					<!-- -->
+					<div class="tile">
+						<div class="row inner-row">
+							<div class="tile" style="background-color: #a8bee3">
+								<div class="row inner-row">
+									<div class="span" style="margin: 0">
+										<img src="mybook/images/profile-pic-160.jpg"
+											alt="Profile Picture">
+									</div>
+									<div class="span" style="margin-left: 10px">
+										<b class="name"></br> {{profile.name}} </br> {{profile.lastname}} </b>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row inner-row mtl">
+							<div class="popover topic-box">
+								<h3 class="popover-title topic-box-title">
+									About <a href="#fakelink"
+										class="btn btn-mini btn-primary pull-right"
+										style="padding: 3px">Edit</a>
+								</h3>
+								<div class="popover-content">
+									<p>Education : {{profile.education}}</p>
+									<p>Hobbies : {{profile.hobbies}}</p>
+									<p>Birthday : {{profile.birthday}}</p>
+									<p>Relationship Status : {{profile.relationship}}</p>
+								</div>
+							</div>
+						</div>
+						<div class="row inner-row mtl">
+							<div class="popover topic-box">
+								<h3 class="popover-title topic-box-title">Likes</h3>
+								<div class="popover-content">
+									<ul class="horizontalList" style="overflow: hidden">
+										<li><div class="itembox tile">
+												<a href="http://www.ise.eng.chula.ac.th/web/"
+													target="_blank"> <img src="mybook/images/likes/ise.jpg"
+													alt="ISE">
+													<div class="tile-title">International School of
+														Engineering (ISE), Chulalongkorn University</div></a>
+											</div></li>
+										<li><div class="itembox tile">
+												<a href="http://www.chula.ac.th/" target="_blank"> <img
+													src="mybook/images/likes/chula.jpg" alt="ISE">
+													<div class="tile-title">Chulalongkorn University</div></a>
+											</div></li>
+										<li><div class="itembox tile">
+												<a href="http://en.wikipedia.org/wiki/Photography"
+													target="_blank"> <img
+													src="mybook/images/likes/photography.jpg" alt="ISE">
+													<div class="tile-title">Photography</div></a>
+											</div></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- -->
+				</div>
+				<!-- /.left column-->
+
+				<!-- right column-->
+				<div class="span7">
+					<!-- -->
+					<div class="row inner-row">
+
+						<div class="tile status-box">
+							<textarea class="span8" rows="2"
+								placeholder="What's on your mind?" ng-model="tempStatusText"></textarea>
+							<button class="btn btn-small btn-primary pull-right"
+								style="padding: 3px" ng-click="postStatus(tempStatusText)">Post</button>
+						</div>
+
+					</div>
+					<!-- -->
+
+					<!-- -->
+					<div class="row inner-row mtl"
+						ng-repeat="status in statuses  | orderBy:'-id':reverse">
+
+						<div class="tile status-box">
+							<p>
+								<img src="mybook/images/profile-pic-50.jpg"
+									alt="Small Profile Picture"> <b>Peace & Raphassit</b>
+							</p>
+							<!--
+							<p>This is my status.</p>
+							-->
+							<p>{{status.text}}</p>
+							<div class="separator"></div>
+							<p>
+								<a href="#fakelink" class="btn btn-small btn-primary"
+									style="padding: 3px">Like</a> <a href="#fakelink"
+									class="btn btn-small btn-primary" style="padding: 3px">Comment</a>
+							</p>
+
+							<div ng-repeat="comment in status.comments">
+								<div class="separator mtl"></div>
+								
+									<p class="comment-pic">
+										<img src="mybook/images/profile-pic-50.jpg"
+											alt="Small Profile Picture">
+									</p>
+									<div>
+										<p class="comment">
+											<b>Peace & Raphassit</b> {{comment}}
+										</p>
+									</div>
+								
+							</div>
+
+							<div class="separator mtl"></div>
+							<textarea class="span8" rows="2" placeholder="Write a comment..."
+								ng-model="tempComment"></textarea>
+							<button class="btn btn-small btn-primary pull-right"
+								style="padding: 3px"
+								ng-click="postComment(status.id, tempComment)">Post
+								Comment</button>
+
+						</div>
+
+					</div>
+				</div>
+				<!-- /.right column-->
+
+			</div>
+		</div>
+	</div>
+	<!-- /.container -->
+
+	<!-- -->
+	<div class="mtl">
+		<div class="bottom-menu bottom-menu-inverse">
+			<div class="container">
+				<div class="row">
+					<div class="span2 brand">
+						<a href="#fakelink" class="brand">MyBook</a>
+					</div>
+					<div class="span5">
+						<ul class="bottom-links">
+							<li><a href="#fakelink">About</a></li>
+							<li><a href="#fakelink">Privacy</a></li>
+							<li><a href="#fakelink">Terms</a></li>
+							<li><a href="#fakelink">Support</a></li>
+							<li><a href="#fakelink">Links</a></li>
+						</ul>
+					</div>
+					<div class="span5">
+						<ul class="bottom-links">
+							<li>Warut Leelachaikul 5331276721</li>
+							<li>Santisuk Prapa-apirat 5331293321</li>
+						</ul>
+						<!--
+						<ul class="bottom-icons">
+							<li><a href="#fakelink" class="fui-pinterest"></a></li>
+							<li><a href="#fakelink" class="fui-facebook"></a></li>
+							<li><a href="#fakelink" class="fui-twitter"></a></li>
+						</ul>
+						-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /bottom-menu-inverse -->
+	</div>
+
+	<!-- Load JS here for greater good =============================-->
+	<script src="js/jquery-1.8.3.min.js"></script>
+	<script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+	<script src="js/jquery.ui.touch-punch.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-select.js"></script>
+	<script src="js/bootstrap-switch.js"></script>
+	<script src="js/flatui-checkbox.js"></script>
+	<script src="js/flatui-radio.js"></script>
+	<script src="js/jquery.tagsinput.js"></script>
+	<script src="js/jquery.placeholder.js"></script>
+	<script src="js/jquery.stacktable.js"></script>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+	<script src="mybook/app.js"></script>
+	<script src="mybook/controllers.js"></script>
+
+</body>
+</html>
