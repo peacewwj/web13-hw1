@@ -148,7 +148,7 @@
 							<textarea class="span8" rows="2"
 								placeholder="What's on your mind?" ng-model="tempStatusText"></textarea>
 							<button class="btn btn-small btn-primary pull-right"
-								style="padding: 3px" ng-click="postStatus(tempStatusText)">Post</button>
+								style="padding: 3px" ng-click="postStatus(tempStatusText); tempStatusText = '';">Post</button>
 						</div>
 
 					</div>
@@ -192,7 +192,7 @@
 								ng-model="tempComment"></textarea>
 							<button class="btn btn-small btn-primary pull-right"
 								style="padding: 3px"
-								ng-click="postComment(status.id, tempComment)">Post
+								ng-click="postComment(status.id, tempComment); tempComment = '';">Post
 								Comment</button>
 
 						</div>
