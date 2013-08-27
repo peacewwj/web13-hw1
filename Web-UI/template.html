@@ -65,7 +65,7 @@
 	<div class="container">
 
 		<!-- -->
-		<div class="row">
+		<div class="row-fluid">
 			<div class="span12">
 				<img class="img-rounded" src="mybook/images/cover.jpg"
 					alt="Cover Photo">
@@ -73,26 +73,28 @@
 		</div>
 		<!-- -->
 
-		<div class="row mtl">
-			<div class="row inner-row">
-				<!-- left column-->
-				<div class="span5">
-					<!-- -->
-					<div class="tile">
-						<div class="row inner-row">
+		<div class="row-fluid mtl">
+			<!-- left column-->
+			<div class="span5">
+				<!-- -->
+				<div class="tile">
+					<div class="row-fluid">
+						<div class="span12">
 							<div class="tile" style="background-color: #a8bee3">
-								<div class="row inner-row">
-									<div class="span" style="margin: 0">
+								<div class="row-fluid">
+									<div class="span5">
 										<img src="mybook/images/profile-pic-160.jpg"
 											alt="Profile Picture">
 									</div>
-									<div class="span" style="margin-left: 10px">
+									<div class="span7" style="margin-left: 10px">
 										<b class="name"></br> {{profile.name}} </br> {{profile.lastname}} </b>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="row inner-row mtl">
+					</div>
+					<div class="row-fluid mtl">
+						<div class="span12">
 							<div class="popover topic-box">
 								<h3 class="popover-title topic-box-title">
 									About <a href="#fakelink"
@@ -107,7 +109,9 @@
 								</div>
 							</div>
 						</div>
-						<div class="row inner-row mtl">
+					</div>
+					<div class="row-fluid mtl">
+						<div class="span12">
 							<div class="popover topic-box">
 								<h3 class="popover-title topic-box-title">Likes</h3>
 								<div class="popover-content">
@@ -117,7 +121,8 @@
 													target="_blank"> <img src="mybook/images/likes/ise.jpg"
 													alt="ISE">
 													<div class="tile-title">International School of
-														Engineering (ISE), Chulalongkorn University</div></a>
+														Engineering (ISE), Chulalongkorn University</div>
+												</a>
 											</div></li>
 										<li><div class="itembox tile">
 												<a href="http://www.chula.ac.th/" target="_blank"> <img
@@ -135,28 +140,31 @@
 							</div>
 						</div>
 					</div>
-					<!-- -->
 				</div>
-				<!-- /.left column-->
+				<!-- -->
+			</div>
+			<!-- /.left column-->
 
-				<!-- right column-->
-				<div class="span7">
-					<!-- -->
-					<div class="row inner-row">
-
+			<!-- right column-->
+			<div class="span7">
+				<!-- -->
+				<div class="row-fluid">
+					<div class="span12">
 						<div class="tile status-box">
 							<textarea class="span8" rows="2"
 								placeholder="What's on your mind?" ng-model="tempStatusText"></textarea>
 							<button class="btn btn-small btn-primary pull-right"
-								style="padding: 3px" ng-click="postStatus(tempStatusText); tempStatusText = '';">Post</button>
+								style="padding: 3px"
+								ng-click="postStatus(tempStatusText); tempStatusText = '';">Post</button>
 						</div>
-
 					</div>
-					<!-- -->
+				</div>
+				<!-- -->
 
-					<!-- -->
-					<div class="row inner-row mtl"
-						ng-repeat="status in statuses  | orderBy:'-id':reverse">
+				<!-- -->
+				<div class="row-fluid mtl"
+					ng-repeat="status in statuses  | orderBy:'-id':reverse">
+					<div class="span12">
 
 						<div class="tile status-box">
 							<p>
@@ -176,13 +184,15 @@
 
 							<div ng-repeat="comment in status.comments">
 								<div class="separator mtl"></div>
-								<div class="row inner-row">
-									<div class="span" style="margin: 0; width:8%;">
+								<div class="row-fluid">
+									<div class="span" style="width: 8%;">
 										<img src="mybook/images/profile-pic-50.jpg"
 											alt="Small Profile Picture">
 									</div>
-									<div class="span" style="margin-left: 5px; width:90%;">
-										<p class="comment"><b>Peace & Raphassit</b> {{comment}} </p>
+									<div class="span" style="margin-left: 5px; width: 86%;">
+										<p class="comment">
+											<b>Peace & Raphassit</b> {{comment}}
+										</p>
 									</div>
 								</div>
 							</div>
@@ -196,12 +206,12 @@
 								Comment</button>
 
 						</div>
-
 					</div>
 				</div>
-				<!-- /.right column-->
-
 			</div>
+			<!-- /.right column-->
+
+
 		</div>
 	</div>
 	<!-- /.container -->
